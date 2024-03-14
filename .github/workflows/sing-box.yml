@@ -72,24 +72,21 @@ jobs:
       TAGS: ${{needs.sing-box.outputs.tags}}
       VERSION: ${{needs.sing-box.outputs.version}}
     steps:
-      - name: Checkout sing-box
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.1
         with:
-          repository: PuerNya/sing-box
-          ref: building
-          fetch-depth: 1
-
-      - name: Setup `Go`
-        uses: actions/setup-go@v5
+          fetch-depth: 0
+      
+      - name: setup go
+        uses: actions/setup-go@v5.0.0
         with:
-          go-version: ${{ needs.go.outputs.version }}
-
-      - name: Checkout sing repository
-        uses: actions/checkout@v4
+          go-version: ${{needs.go.outputs.version}}    
+    
+      - name: checkout sing repository
+        uses: actions/checkout@v4.1.1
         with:
-          repository: PuerNya/sing
           ref: fix-interface
           path: sing
+          repository: PuerNya/sing
 
       - name: replace sing
         run: sed -i 's/^\/\/replace github.com.*$/replace github.com\/sagernet\/sing => .\/sing/' go.mod
