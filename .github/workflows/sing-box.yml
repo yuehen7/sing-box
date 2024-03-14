@@ -1,4 +1,4 @@
-name: Build Sing-box PuerNya
+name: Build Sing-box
 on:
   workflow_dispatch:
   schedule:
@@ -39,7 +39,7 @@ jobs:
           git fetch --tags sekai
           version=$(CGO_ENABLED=0 go run ./cmd/internal/read_tag)
           echo version=$version >> $GITHUB_OUTPUT
-          echo tags=with_quic,with_dhcp,with_wireguard,with_shadowsocksr,with_ech,with_utls,with_reality_server,with_clash_api,with_gvisor >> $GITHUB_OUTPUT
+          echo tags=with_quic,with_dhcp,with_wireguard,with_ech,with_utls,with_reality_server,with_clash_api,with_gvisor >> $GITHUB_OUTPUT
   cross:
     strategy:
       matrix:
