@@ -21,7 +21,7 @@ jobs:
       version: ${{steps.sing-box.outputs.version}}
       tags: ${{steps.sing-box.outputs.tags}}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.1
         with:
           repository: PuerNya/sing-box
           ref: building
@@ -74,6 +74,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
         with:
+          repository: PuerNya/sing-box
+          ref: building
           fetch-depth: 0
       
       - name: setup go
